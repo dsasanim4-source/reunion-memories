@@ -9,6 +9,10 @@ DIR="out"
 
 cd "$(dirname "$0")/$DIR"
 
+# 关键：GitHub Pages 默认用 Jekyll，会忽略 _next 等下划线开头目录，导致 JS/CSS 全 404。
+# 必须有 .nojekyll 文件来关闭 Jekyll。缺它整站交互会失效。
+touch .nojekyll
+
 echo "==> 上传文件为 blob 并构建 tree..."
 TREE_ITEMS="[]"
 while IFS= read -r f; do
