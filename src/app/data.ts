@@ -21,19 +21,18 @@ export type Member = {
   avatar?: string; // 填了就显示真图，放在 public/ 目录
 };
 
+// title（江湖称号）和 quote（口头禅）暂用占位搞笑款，替换成每个人的真实特点即可。
 export const members: Member[] = [
-  { name: "老大", title: "永远迟到担当", quote: "马上到马上到（还没出门）", color: "from-amber-200 to-orange-300" },
-  { name: "阿强", title: "饭局发起人", quote: "今晚谁不来谁狗", color: "from-rose-200 to-amber-200" },
-  { name: "小胖", title: "行走的零食库", quote: "我减肥，从明天开始", color: "from-teal-200 to-emerald-300" },
-  { name: "眼镜", title: "作业救星", quote: "抄可以，别抄一模一样", color: "from-indigo-200 to-purple-300" },
-  { name: "阿飞", title: "球场C位", quote: "这球绝对进（没进）", color: "from-orange-200 to-red-300" },
-  { name: "静静", title: "群里唯一清醒的", quote: "你们又在群里发什么疯", color: "from-pink-200 to-rose-300" },
-  { name: "老K", title: "游戏坑王", quote: "别怪我，是网卡了", color: "from-sky-200 to-cyan-300" },
-  { name: "二妹", title: "笑点最低", quote: "哈哈哈哈哈（还没听完）", color: "from-yellow-200 to-amber-300" },
-  { name: "大熊", title: "力气担当", quote: "重活交给我，动脑的免谈", color: "from-lime-200 to-green-300" },
-  { name: "阿May", title: "拍照摄影师", quote: "再来一张，这张我闭眼了", color: "from-violet-200 to-fuchsia-300" },
-  { name: "小林", title: "冷笑话制造机", quote: "我讲个笑话…（全场沉默）", color: "from-emerald-200 to-teal-300" },
-  { name: "阿珍", title: "群主兼客服", quote: "聚会时间已发群公告，请查收", color: "from-red-200 to-orange-300" },
+  { name: "星星", title: "永远迟到担当", quote: "马上到马上到（还没出门）", color: "from-amber-200 to-orange-300" },
+  { name: "博", title: "饭局发起人", quote: "今晚谁不来谁狗", color: "from-rose-200 to-amber-200" },
+  { name: "尧", title: "行走的零食库", quote: "我减肥，从明天开始", color: "from-teal-200 to-emerald-300" },
+  { name: "康", title: "作业救星", quote: "抄可以，别抄一模一样", color: "from-indigo-200 to-purple-300" },
+  { name: "杨超", title: "球场C位", quote: "这球绝对进（没进）", color: "from-orange-200 to-red-300" },
+  { name: "恒超", title: "群里唯一清醒的", quote: "你们又在群里发什么疯", color: "from-pink-200 to-rose-300" },
+  { name: "佳浩", title: "游戏坑王", quote: "别怪我，是网卡了", color: "from-sky-200 to-cyan-300" },
+  { name: "家俊", title: "笑点最低", quote: "哈哈哈哈哈（还没听完）", color: "from-yellow-200 to-amber-300" },
+  { name: "豆豆", title: "力气担当", quote: "重活交给我，动脑的免谈", color: "from-lime-200 to-green-300" },
+  { name: "毛毛", title: "冷笑话制造机", quote: "我讲个笑话…（全场沉默）", color: "from-violet-200 to-fuchsia-300" },
 ];
 
 // 趣味统计数字（一帮人的热闹日常）
@@ -43,7 +42,7 @@ export type Stat = {
 };
 
 export const stats: Stat[] = [
-  { value: "12", label: "一个都没跑的老伙计" },
+  { value: "10", label: "一个都没跑的老伙计" },
   { value: "9999+", label: "群里发过的沙雕表情包" },
   { value: "∞", label: "凑齐一桌的路边摊（顿）" },
   { value: "0", label: "成功执行的减肥计划" },
@@ -106,9 +105,9 @@ export type Quiz = {
 export const quizzes: Quiz[] = [
   {
     question: "聚会时永远最后一个到的是谁？",
-    options: ["老大", "阿强", "眼镜", "全都迟到"],
+    options: ["星星", "博", "康", "全都迟到"],
     answer: 0,
-    reveal: "老大的「马上到」是本群最大的谎言。",
+    reveal: "星星的「马上到」是本群最大的谎言。",
   },
   {
     question: "群里凑饭局最爱去哪？",
