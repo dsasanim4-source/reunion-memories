@@ -51,8 +51,47 @@ npm run dev
 
 ## 倒计时
 
-首页倒数到下次聚会。改 `src/app/data.ts` 里的 `reunionDate` 即可，
-格式 `"2026-10-01 18:00"`。到期后自动显示庆祝文案。
+首页倒数到下次聚会。可在网页编辑模式里改日期（见下），
+或改 `src/app/data.ts` 里的 `reunionDate`，格式 `"2026-10-01 18:00"`。
+
+## 网页在线编辑（Firebase 配置）
+
+标题、介绍、成员、数字、黑历史、测验、心里话等文字，都能在网页上直接编辑，
+保存后所有人都看到最新内容。需要配置 [Firebase](https://firebase.google.com)（免费）。
+
+配置步骤（一次性）：
+
+1. 打开 https://console.firebase.google.com ，点 **添加项目 / Add project**，
+   起个名字（比如 reunion），一路下一步创建。
+2. 项目建好后，在项目首页点那个 **`</>`（Web）** 图标，注册一个 Web 应用，
+   给应用起个名字。之后它会显示一段 `firebaseConfig = { apiKey: "...", ... }`。
+   **把这几个值复制下来。**
+3. 左侧菜单 **构建 Build → Firestore Database → 创建数据库**。位置随便选，
+   模式选 **以测试模式开始**（或生产模式，规则见第 5 步）。
+4. 打开 `src/app/firebase.ts`，把第 2 步复制的值填进 `firebaseConfig`；
+   顺便把 `EDIT_PASSWORD` 改成你们约定的编辑密码。
+5. 在 Firestore 的 **规则 Rules** 标签，粘贴下面的规则并发布
+   （允许所有人读、允许写 site/content 这一个文档）：
+   ```
+   rules_version = '2';
+   service cloud.firestore {
+     match /databases/{database}/documents {
+       match /site/content {
+         allow read, write: if true;
+       }
+       match /{document=**} {
+         allow read: if true;
+       }
+     }
+   }
+   ```
+6. 重新部署。
+
+配置好后，网页右上角出现 **编辑** 按钮 → 输入密码 → 进入编辑模式，
+可直接改文字、加减成员/条目，点 **保存** 写入 Firebase。
+
+> 安全说明：编辑受密码保护，但密码写在前端代码里、规则也允许匿名写，
+> 属于「防君子不防小人」，适合朋友小圈子。别把密码和网址一起公开发到大群外。
 
 ## 部署
 

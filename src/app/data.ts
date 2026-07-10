@@ -1,6 +1,6 @@
-// 集中管理页面内容，方便日后修改，无需改动组件。
+// 集中管理页面内容。这里是「默认内容」，网站首次加载或 Firebase 未配置时显示。
+// 一旦有人在网页上编辑并保存，内容会存到 Firebase，覆盖这里的默认值。
 // 主题：我们这一帮发小的回忆 · 轻松搞笑基调
-// 【占位内容】下面都是示例，替换成你们这帮人的真实故事即可。
 
 export const site = {
   title: "发小天团",
@@ -147,3 +147,44 @@ export const messages: Message[] = [
   { name: "致这帮人", text: "天天在群里互相嫌弃，但真有事的时候，一个电话全到齐。" },
   { name: "友情提示", text: "下次聚会谁再放鸽子，全群拉黑三天（第四天照样喊你）。" },
 ];
+
+// 供随机分配新成员头像色的调色板
+export const palette = [
+  "from-amber-200 to-orange-300",
+  "from-rose-200 to-amber-200",
+  "from-teal-200 to-emerald-300",
+  "from-indigo-200 to-purple-300",
+  "from-orange-200 to-red-300",
+  "from-pink-200 to-rose-300",
+  "from-sky-200 to-cyan-300",
+  "from-yellow-200 to-amber-300",
+  "from-lime-200 to-green-300",
+  "from-violet-200 to-fuchsia-300",
+];
+
+// 所有可编辑内容打包成一个对象，作为 Firebase 里存储与读取的结构。
+export type SiteContent = {
+  title: string;
+  subtitle: string;
+  intro: string;
+  reunionDate: string;
+  members: Member[];
+  stats: Stat[];
+  timeline: TimelineItem[];
+  photos: Photo[];
+  quizzes: Quiz[];
+  messages: Message[];
+};
+
+export const defaultContent: SiteContent = {
+  title: site.title,
+  subtitle: site.subtitle,
+  intro: site.intro,
+  reunionDate: site.reunionDate,
+  members,
+  stats,
+  timeline,
+  photos,
+  quizzes,
+  messages,
+};

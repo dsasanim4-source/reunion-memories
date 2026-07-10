@@ -1,4 +1,5 @@
 import Nav from "./components/Nav";
+import EditBar from "./components/EditBar";
 import Hero from "./components/Hero";
 import Members from "./components/Members";
 import Stats from "./components/Stats";
@@ -13,6 +14,7 @@ export default function Home() {
   return (
     <>
       <span id="top" />
+      <EditBar />
       <Nav />
       <main className="flex-1">
         <Hero />

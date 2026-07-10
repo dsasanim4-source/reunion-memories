@@ -1,6 +1,8 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import { useContent } from "../content-context";
+import { Editable } from "./Editable";
 import { site } from "../data";
 
 // 倒数到下次聚会。返回剩余天/时/分/秒，到期返回 null。
@@ -17,8 +19,8 @@ function useCountdown(target: string) {
     return () => clearInterval(id);
   }, [target]);
 
-  if (left === null) return undefined; // 尚未初始化（避免服务端/客户端不一致）
-  if (left <= 0) return null; // 已到期
+  if (left === null) return undefined;
+  if (left <= 0) return null;
   return {
     days: Math.floor(left / 86400000),
     hours: Math.floor((left % 86400000) / 3600000),
@@ -39,24 +41,49 @@ function Unit({ value, label }: { value: number; label: string }) {
 }
 
 export default function Hero() {
-  const cd = useCountdown(site.reunionDate);
+  const { content, editing, update } = useContent();
+  const cd = useCountdown(content.reunionDate);
 
   return (
     <section className="relative flex flex-col items-center justify-center text-center px-6 py-24 md:py-32 overflow-hidden">
       <div className="absolute inset-0 bg-gradient-to-b from-accent-soft/40 via-transparent to-transparent" />
-      <div className="relative animate-float-up">
+      <div className="relative animate-float-up w-full max-w-2xl">
         <p className="text-accent tracking-[0.3em] text-sm mb-4">
           BEST FRIENDS · 塑料兄弟情
         </p>
         <h1 className="text-5xl md:text-7xl font-bold tracking-tight mb-4">
-          {site.title}
+          <Editable
+            value={content.title}
+            onChange={(v) => update({ title: v })}
+            inputClassName="text-center text-4xl"
+          />
         </h1>
-        <p className="text-lg md:text-2xl text-foreground/70 mb-8">
-          {site.subtitle}
-        </p>
-        <p className="max-w-xl mx-auto text-foreground/70 leading-relaxed mb-12">
-          {site.intro}
-        </p>
+        <div className="text-lg md:text-2xl text-foreground/70 mb-8">
+          <Editable
+            value={content.subtitle}
+            onChange={(v) => update({ subtitle: v })}
+            inputClassName="text-center"
+          />
+        </div>
+        <div className="max-w-xl mx-auto text-foreground/70 leading-relaxed mb-8">
+          <Editable
+            value={content.intro}
+            onChange={(v) => update({ intro: v })}
+            multiline
+          />
+        </div>
+
+        {editing && (
+          <div className="max-w-xl mx-auto mb-8 text-left bg-paper/70 rounded-xl p-4 border border-accent-soft/40">
+            <label className="text-sm text-foreground/60 block mb-1">
+              下次聚会日期（格式 2026-10-01 18:00）
+            </label>
+            <Editable
+              value={content.reunionDate}
+              onChange={(v) => update({ reunionDate: v })}
+            />
+          </div>
+        )}
 
         {cd === null ? (
           <div className="inline-flex bg-paper/80 backdrop-blur rounded-2xl px-10 py-6 shadow-lg shadow-accent/10 border border-accent-soft/50">
