@@ -21,8 +21,8 @@ export const site = {
 // 另外在 Settings → Security 勾选 "Resource list"，否则照片墙拉不到列表。
 // 两个值填好前，上传区会提示「尚未配置」，不影响其他功能。
 export const cloudinary = {
-  cloudName: "", // 例如 "dxxxxxx"
-  uploadPreset: "", // 例如 "reunion_unsigned"
+  cloudName: "ke4thsna",
+  uploadPreset: "ml_default", // 已验证为 Unsigned，可用
   tag: "reunion", // 所有上传都打这个标签，照片墙按它拉取
 };
 
