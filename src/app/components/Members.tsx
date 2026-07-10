@@ -36,10 +36,14 @@ export default function Members() {
               )}
             </div>
             <h3 className="font-bold text-lg">{m.name}</h3>
-            <p className="text-accent text-sm font-medium mb-2">{m.title}</p>
-            <p className="text-foreground/60 text-sm leading-snug">
-              「{m.quote}」
-            </p>
+            {m.title && (
+              <p className="text-accent text-sm font-medium mb-2">{m.title}</p>
+            )}
+            {m.quote && (
+              <p className="text-foreground/60 text-sm leading-snug">
+                「{m.quote}」
+              </p>
+            )}
           </div>
         ))}
       </div>

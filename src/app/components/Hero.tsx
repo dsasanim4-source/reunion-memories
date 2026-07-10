@@ -3,27 +3,43 @@
 import { useEffect, useState } from "react";
 import { site } from "../data";
 
-// 计算从认识那天到现在的天数，实时跳动。
-function useDaysKnown(metDate: string) {
-  const [days, setDays] = useState<number | null>(null);
-  const [secs, setSecs] = useState(0);
+// 倒数到下次聚会。返回剩余天/时/分/秒，到期返回 null。
+function useCountdown(target: string) {
+  const [left, setLeft] = useState<number | null>(null);
 
   useEffect(() => {
     const tick = () => {
-      const diff = Date.now() - new Date(metDate).getTime();
-      setDays(Math.floor(diff / 86400000));
-      setSecs(Math.floor((diff % 86400000) / 1000));
+      const diff = new Date(target.replace(/-/g, "/")).getTime() - Date.now();
+      setLeft(diff > 0 ? diff : 0);
     };
     tick();
     const id = setInterval(tick, 1000);
     return () => clearInterval(id);
-  }, [metDate]);
+  }, [target]);
 
-  return { days, secs };
+  if (left === null) return undefined; // 尚未初始化（避免服务端/客户端不一致）
+  if (left <= 0) return null; // 已到期
+  return {
+    days: Math.floor(left / 86400000),
+    hours: Math.floor((left % 86400000) / 3600000),
+    mins: Math.floor((left % 3600000) / 60000),
+    secs: Math.floor((left % 60000) / 1000),
+  };
+}
+
+function Unit({ value, label }: { value: number; label: string }) {
+  return (
+    <div className="flex flex-col items-center">
+      <span className="text-3xl md:text-4xl font-bold text-accent tabular-nums">
+        {String(value).padStart(2, "0")}
+      </span>
+      <span className="text-xs text-foreground/60 mt-1">{label}</span>
+    </div>
+  );
 }
 
 export default function Hero() {
-  const { days, secs } = useDaysKnown(site.metDate);
+  const cd = useCountdown(site.reunionDate);
 
   return (
     <section className="relative flex flex-col items-center justify-center text-center px-6 py-24 md:py-32 overflow-hidden">
@@ -42,22 +58,25 @@ export default function Hero() {
           {site.intro}
         </p>
 
-        {days !== null && (
-          <div className="inline-flex flex-col items-center bg-paper/80 backdrop-blur rounded-2xl px-10 py-6 shadow-lg shadow-accent/10 border border-accent-soft/50">
-            <span className="text-xs text-foreground/50 mb-3 tracking-widest">
-              {site.metLabel}
-            </span>
-            <div className="flex items-baseline gap-2">
-              <span className="text-5xl md:text-6xl font-bold text-accent tabular-nums">
-                {days.toLocaleString()}
-              </span>
-              <span className="text-lg text-foreground/60">天</span>
-            </div>
-            <span className="text-xs text-foreground/40 mt-2 tabular-nums">
-              外加 {secs} 秒，还在继续
+        {cd === null ? (
+          <div className="inline-flex bg-paper/80 backdrop-blur rounded-2xl px-10 py-6 shadow-lg shadow-accent/10 border border-accent-soft/50">
+            <span className="text-2xl font-bold text-accent">
+              {site.reunionArrived}
             </span>
           </div>
-        )}
+        ) : cd ? (
+          <div className="inline-flex flex-col items-center bg-paper/80 backdrop-blur rounded-2xl px-8 py-6 shadow-lg shadow-accent/10 border border-accent-soft/50">
+            <span className="text-xs text-foreground/50 mb-3 tracking-widest">
+              {site.reunionLabel}
+            </span>
+            <div className="flex gap-5 md:gap-7">
+              <Unit value={cd.days} label="天" />
+              <Unit value={cd.hours} label="时" />
+              <Unit value={cd.mins} label="分" />
+              <Unit value={cd.secs} label="秒" />
+            </div>
+          </div>
+        ) : null}
       </div>
     </section>
   );

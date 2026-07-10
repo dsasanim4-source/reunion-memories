@@ -5,6 +5,7 @@ const links = [
   { href: "#stats", label: "数字" },
   { href: "#timeline", label: "黑历史" },
   { href: "#gallery", label: "名场面" },
+  { href: "#wall", label: "照片墙" },
   { href: "#quiz", label: "小测验" },
   { href: "#closing", label: "心里话" },
 ];
