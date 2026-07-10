@@ -1,5 +1,6 @@
 import Nav from "./components/Nav";
 import Hero from "./components/Hero";
+import Members from "./components/Members";
 import Stats from "./components/Stats";
 import Timeline from "./components/Timeline";
 import Gallery from "./components/Gallery";
@@ -14,6 +15,7 @@ export default function Home() {
       <Nav />
       <main className="flex-1">
         <Hero />
+        <Members />
         <Stats />
         <Timeline />
         <Gallery />

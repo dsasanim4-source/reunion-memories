@@ -25,10 +25,10 @@ export default function Quiz() {
     <section id="quiz" className="bg-paper/60 py-20">
       <div className="max-w-2xl mx-auto px-6">
         <h2 className="text-3xl md:text-4xl font-bold text-center mb-3">
-          你有多懂这段友情
+          你有多懂这帮人
         </h2>
         <p className="text-center text-foreground/60 mb-12">
-          答错的话，友情警告
+          答错的话，取消群成员资格
         </p>
 
         <div className="space-y-8">
@@ -86,10 +86,10 @@ export default function Quiz() {
             </p>
             <p className="text-foreground/70 mt-1">
               {correct === quizzes.length
-                ? "满分！这友情稳如老狗。"
+                ? "满分！妥妥的元老级群成员。"
                 : correct === 0
-                ? "零分？你确定我俩是发小？"
-                : "还行，勉强够格当我发小。"}
+                ? "零分？你确定你在这个群里待过？"
+                : "还行，勉强够格留在群里。"}
             </p>
           </div>
         )}

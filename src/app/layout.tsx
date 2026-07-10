@@ -8,8 +8,8 @@ const geistSans = Geist({
 });
 
 export const metadata: Metadata = {
-  title: "发小传 · 俩人从小到大的搞笑纪录片",
-  description: "记录我和发小干过的那些傻事：黑历史、名场面、还有说不完的糗事。",
+  title: "发小天团 · 十几个人从小闹到大的搞笑纪录片",
+  description: "记录我们这帮发小干过的那些傻事：成员图鉴、黑历史、名场面、说不完的糗事。",
 };
 
 export default function RootLayout({
