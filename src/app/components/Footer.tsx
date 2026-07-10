@@ -7,7 +7,7 @@ export default function Footer() {
         {site.title} · {site.subtitle}
       </p>
       <p className="text-foreground/40 text-xs mt-2">
-        愿时光温柔，愿我们常聚 · {new Date().getFullYear()}
+        塑料兄弟情，越用越结实 · {new Date().getFullYear()}
       </p>
     </footer>
   );

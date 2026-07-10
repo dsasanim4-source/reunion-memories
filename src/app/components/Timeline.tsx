@@ -4,10 +4,10 @@ export default function Timeline() {
   return (
     <section id="timeline" className="max-w-3xl mx-auto px-6 py-20">
       <h2 className="text-3xl md:text-4xl font-bold text-center mb-3">
-        时光轴
+        黑历史编年史
       </h2>
       <p className="text-center text-foreground/60 mb-16">
-        我们一起走过的重要时刻
+        那些年我俩一起干过的蠢事，一件都跑不掉
       </p>
 
       <div className="relative">

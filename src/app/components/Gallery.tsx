@@ -6,10 +6,10 @@ export default function Gallery() {
     <section id="gallery" className="bg-paper/60 py-20">
       <div className="max-w-5xl mx-auto px-6">
         <h2 className="text-3xl md:text-4xl font-bold text-center mb-3">
-          照片墙
+          名场面照片墙
         </h2>
         <p className="text-center text-foreground/60 mb-16">
-          每一张都是一段回不去却忘不掉的时光
+          每一张都是可以拿来威胁对方一辈子的黑料
         </p>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
