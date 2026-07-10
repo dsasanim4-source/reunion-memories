@@ -1,0 +1,48 @@
+@import "tailwindcss";
+
+:root {
+  --background: #fdf8f3;
+  --foreground: #3a2e28;
+  --accent: #c2703d;
+  --accent-soft: #e8c9a8;
+  --paper: #fffdf9;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-accent: var(--accent);
+  --color-accent-soft: var(--accent-soft);
+  --color-paper: var(--paper);
+  --font-sans: var(--font-geist-sans);
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-sans), "PingFang SC", "Microsoft YaHei", sans-serif;
+}
+
+/* 老照片纸张纹理背景 */
+.paper-grain {
+  background-image: radial-gradient(
+    rgba(120, 90, 60, 0.04) 1px,
+    transparent 1px
+  );
+  background-size: 4px 4px;
+}
+
+@keyframes float-up {
+  from {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-float-up {
+  animation: float-up 0.7s ease-out both;
+}

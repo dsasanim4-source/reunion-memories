@@ -1,0 +1,74 @@
+"use client";
+
+import { useEffect, useState } from "react";
+import { site } from "../data";
+
+function useCountdown(target: string) {
+  const [left, setLeft] = useState<number | null>(null);
+
+  useEffect(() => {
+    const tick = () => {
+      const diff = new Date(target).getTime() - Date.now();
+      setLeft(diff > 0 ? diff : 0);
+    };
+    tick();
+    const id = setInterval(tick, 1000);
+    return () => clearInterval(id);
+  }, [target]);
+
+  if (left === null) return null;
+  const days = Math.floor(left / 86400000);
+  const hours = Math.floor((left % 86400000) / 3600000);
+  const mins = Math.floor((left % 3600000) / 60000);
+  const secs = Math.floor((left % 60000) / 1000);
+  return { days, hours, mins, secs };
+}
+
+function Unit({ value, label }: { value: number; label: string }) {
+  return (
+    <div className="flex flex-col items-center">
+      <span className="text-3xl md:text-4xl font-bold text-accent tabular-nums">
+        {String(value).padStart(2, "0")}
+      </span>
+      <span className="text-xs text-foreground/60 mt-1">{label}</span>
+    </div>
+  );
+}
+
+export default function Hero() {
+  const cd = useCountdown(site.reunionDate);
+
+  return (
+    <section className="relative flex flex-col items-center justify-center text-center px-6 py-24 md:py-32 overflow-hidden">
+      <div className="absolute inset-0 bg-gradient-to-b from-accent-soft/40 via-transparent to-transparent" />
+      <div className="relative animate-float-up">
+        <p className="text-accent tracking-[0.3em] text-sm mb-4">
+          MEMORIES · 回忆录
+        </p>
+        <h1 className="text-5xl md:text-7xl font-bold tracking-tight mb-4">
+          {site.title}
+        </h1>
+        <p className="text-xl md:text-2xl text-foreground/70 mb-8">
+          {site.subtitle}
+        </p>
+        <p className="max-w-xl mx-auto text-foreground/70 leading-relaxed mb-12">
+          {site.intro}
+        </p>
+
+        {cd && (
+          <div className="inline-flex flex-col items-center bg-paper/80 backdrop-blur rounded-2xl px-8 py-6 shadow-lg shadow-accent/10 border border-accent-soft/50">
+            <span className="text-xs text-foreground/50 mb-3 tracking-widest">
+              {site.reunionLabel}
+            </span>
+            <div className="flex gap-5 md:gap-7">
+              <Unit value={cd.days} label="天" />
+              <Unit value={cd.hours} label="时" />
+              <Unit value={cd.mins} label="分" />
+              <Unit value={cd.secs} label="秒" />
+            </div>
+          </div>
+        )}
+      </div>
+    </section>
+  );
+}
