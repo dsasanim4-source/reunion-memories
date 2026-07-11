@@ -1,30 +1,32 @@
 {
   "title": "回忆",
   "subtitle": "十几个人从小闹到大的搞笑纪录片",
-  "intro": "一群从穿开裆裤就认识的家伙，一起逃课、一起挨骂、一起长大。如今各奔东西，但群里一喊「吃饭」，还是能凑齐一桌。这网站专门收藏我们这帮人干过的傻事。",
+  "intro": "一群从穿开裆裤就认识的家伙，一起挨骂、一起长大。如今各奔东西，但群里一喊「吃饭」，还是能凑齐一桌。这网站专门收藏我们这帮人干过的傻事。",
   "reunionDate": "2027-02-06 00:00",
+  "reunionLocation": "回家",
+  "heroImage": "https://res.cloudinary.com/ke4thsna/image/upload/v1783791151/mmexport1738074589362_kdz79e.jpg",
   "members": [
     {
       "name": "星星",
-      "title": "",
+      "title": "星",
       "quote": "",
       "color": "from-amber-200 to-orange-300"
     },
     {
       "name": "博",
-      "title": "",
+      "title": "博总",
       "quote": "",
       "color": "from-rose-200 to-amber-200"
     },
     {
       "name": "尧",
-      "title": "",
+      "title": "尧总",
       "quote": "",
       "color": "from-teal-200 to-emerald-300"
     },
     {
       "name": "康",
-      "title": "",
+      "title": "康总",
       "quote": "",
       "color": "from-indigo-200 to-purple-300"
     },
@@ -85,38 +87,41 @@
   ],
   "timeline": [
     {
-      "year": "小学",
-      "title": "帮派成立",
-      "desc": "一群人为了争小卖部最后一根辣条打成一团，打完发现挺聊得来，从此结伙。"
+      "year": "小时候",
+      "title": "村子里",
+      "desc": "一群人在佳皓的率领下玩麻将，小小的世界里没有电子游戏却有了电子游戏"
     },
     {
       "year": "初中",
-      "title": "集体作案",
-      "desc": "全体翻墙去网吧，被班主任一锅端，十几个人在办公室门口排排站，蔚为壮观。"
+      "title": "一起玩游戏",
+      "desc": "Cf的战天下，我的世界没有成功联机的小镇"
     },
     {
       "year": "高中",
-      "title": "革命友谊",
-      "desc": "考试互相递小抄，结果一整排一起挂科，成为年级传说级的翻车现场。"
+      "title": "各在一方",
+      "desc": "到了高中也就不在一个学校，不变的是联系"
     },
     {
       "year": "现在",
-      "title": "云养群友",
-      "desc": "各在一方，但群消息从没断过，谁发个饭照，底下秒回二十条「带我」。"
+      "title": "各自忙碌",
+      "desc": "上学的上班的都有，联系少了，感情没少"
     }
   ],
   "photos": [
     {
-      "caption": "小学：全员把脸埋进蛋糕的名场面",
-      "color": "from-amber-200 to-orange-300"
+      "caption": "博总调凉菜",
+      "color": "from-amber-200 to-orange-300",
+      "src": "https://res.cloudinary.com/ke4thsna/image/upload/v1783791499/IMG_20250128_173814_lf1fln.jpg"
     },
     {
-      "caption": "初中：网吧门口被逮的集体合影",
-      "color": "from-rose-200 to-amber-200"
+      "caption": "过年准备火锅",
+      "color": "from-rose-200 to-amber-200",
+      "src": "https://res.cloudinary.com/ke4thsna/image/upload/v1783791534/IMG_20260216_194644_oqgqxo.jpg"
     },
     {
-      "caption": "高中：运动会输了还笑得很开心",
-      "color": "from-teal-200 to-emerald-300"
+      "caption": "一块合影",
+      "color": "from-teal-200 to-emerald-300",
+      "src": "https://res.cloudinary.com/ke4thsna/image/upload/v1783791571/mmexport1738074589362_iup8de.jpg"
     },
     {
       "caption": "毕业：十几个人哭成一团",
